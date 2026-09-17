@@ -15,7 +15,7 @@ namespace Delegate_Vertieferung
                 buch.Verliehen = true;
                 Console.WriteLine("Gimme the ausleihe datum ein!!");
                 buch.AusleiheDatum = Convert.ToDateTime(Console.ReadLine());
- 
+
                 Console.WriteLine($"Das Buch {buch.Titel} wurde erfolgreich ausgeliehen");
             }
 
@@ -49,7 +49,20 @@ namespace Delegate_Vertieferung
         {
             Console.WriteLine($"Titel: {buch.Titel} - Author: {buch.Author} - Jahr: {buch.Jahr}");
         }
-     
+
+        public void BerchneAlter(Buch buch)
+        {
+
+
+            int BuchAlt = DateTime.Now.Year - buch.Jahr;
+            Console.WriteLine();
+            Console.Write($"Das buch {buch.Titel} ist {BuchAlt} alt!!");
+
+
+
+        }
+
+
 
     }
 }

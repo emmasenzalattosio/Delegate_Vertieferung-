@@ -3,6 +3,7 @@
 namespace Delegate_Vertieferung
 {
     public delegate void BuchAktion(Buch buch);
+    public delegate int BuchAlterBerechnung(Buch buch);
 
     internal class Program
     {
@@ -12,24 +13,17 @@ namespace Delegate_Vertieferung
 
             //First();
             Buch();
-            Run();
+
 
         }
 
 
-
         public static void Buch()
         {
-            Buch HarryPotter = new Buch("HarryPotter", "JK Bitch", 1997, "2133-2345-2434-1234-4534", 0.45m);
-            Buch HerrDerrRinge = new Buch("Ring Scheiß", "idk", 1995, "2312-3434-2341-6575-3423", 0.46m);
-            Buch AnimalFarm = new Buch("Animal Farm", "Orwell", 1945, "6533-2455-6765-8786-6534", 3.00m);
-            Buch Cows = new Buch("Cows", "Matthew Stokoe", 1998, "7686-4353-7867-4533-3456", 2.00m);
-
-
-            Action<Buch> buch = Buch_Methoden.Ausleihen;
-            buch += Buch_Methoden.Zuruckgeben;
-            buch += Buch_Verwaltung.PreisBerechnung;
-            buch += x => Console.WriteLine("BlaBla");
+            //Action<Buch> buch = Buch_Methoden.Ausleihen;
+            //buch += x => Console.WriteLine("BlaBla");
+            Nice_Cute cute = new Nice_Cute();
+            cute.ChooseOldBook();
 
             // Ausführung Dlegeates 
             // --------------------------------- ALL DELEGATES WITH LAMBDA USAGE ---------------------------------
@@ -40,7 +34,7 @@ namespace Delegate_Vertieferung
 
 
             //fbuch += (Buch buch) => Convert.ToInt32(buch.ISBN.Substring(0, 2)) + buch.AusleiheDatum.Year;
-            var result = fbuch(HarryPotter);
+            var result = fbuch(Books_List.HarryPotter);
 
 
             //methode () because I need the ausführung0 
@@ -54,22 +48,16 @@ namespace Delegate_Vertieferung
             Comparison<Buch> comparison2 = (HarryPotter, HerrDerrRinge) => HarryPotter.Titel.CompareTo(HerrDerrRinge.Titel);
 
             Comparison<Buch> cbuch = (Buch buch1, Buch buch2) => (buch1.Titel.Equals(buch2.Titel) ? 0 : 1);
-            Console.WriteLine(cbuch(HarryPotter, HerrDerrRinge));
+            Console.WriteLine(cbuch(Books_List.HarryPotter, Books_List.HerrDerrRinge));
             //HarryPotter.Sort((fbuch.RueckgabeDatum.Year, AusleiheDatum )
 
 
             // Here we call the first time our methode with the parameter Delegate
-            Buch_Verwaltung.Prozess(HarryPotter, buch, fbuch, pbuch);
+            Buch_Verwaltung.Prozess(Books_List.HarryPotter, buch, fbuch, pbuch);
 
 
 
             // ----------------------------------------------------------------------------------------------------------------
-
-        }
-
-        public static void Run()
-        {
-            BuchAktion action = Buch_Methoden.BuchDrucken;
 
         }
 

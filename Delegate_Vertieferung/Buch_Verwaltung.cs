@@ -6,7 +6,7 @@ namespace Delegate_Vertieferung
 {
     public class Buch_Verwaltung // Verwaltung = administration
     {
-
+         
 
         public static void Prozess(Buch buch, Action<Buch> action, Func<Buch, int> func, Predicate<Buch> predi)
         {
@@ -15,20 +15,20 @@ namespace Delegate_Vertieferung
             Console.WriteLine($"Ausleihte nummer ist: {result}");
 
             Console.WriteLine($"Komm das buch aus Deutschland?? {predi(buch)}");
-            
+
         }
 
 
-        public static void PreisBerechnung(Buch buch)
+        public void PreisBerechnung(Buch buch)
         {
-            if (buch.Verliehen)
-            {
-                TimeSpan ausleihedauer = buch.RueckgabeDatum - buch.AusleiheDatum;
 
-                decimal gesamtpreis = (decimal)ausleihedauer.TotalDays * buch.Preis;
-                Console.WriteLine($"Der Gesamtpreis für das Buch '{buch.Titel}' beträgt: {gesamtpreis:C}' für {ausleihedauer.TotalDays} Tage.");
+            TimeSpan ausleihedauer = buch.RueckgabeDatum - buch.AusleiheDatum;
 
-            }
+            decimal gesamtpreis = (decimal)ausleihedauer.TotalDays * buch.Preis;
+            Console.WriteLine();
+            Console.WriteLine($"Der Gesamtpreis für das Buch '{buch.Titel}' beträgt: {gesamtpreis} für {ausleihedauer.TotalDays} Tage.");
+
+
         }
 
 

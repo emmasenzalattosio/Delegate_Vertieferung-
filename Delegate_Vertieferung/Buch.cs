@@ -5,9 +5,6 @@ using System.Text;
 
 namespace Delegate_Vertieferung
 {
-
-
-
     public class Buch
     {
         public string Titel { get; set; }
